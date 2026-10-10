@@ -1,0 +1,31 @@
+# macOS / Xcode
+.DS_Store
+**/xcuserdata/
+**/*.xcuserstate
+DerivedData/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+build/
+
+# SwiftPM
+.build/
+.swiftpm/
+
+# Secrets / local
+.env
+.env.*
+*.pem
+
+# Python (if used locally later)
+.venv/
+__pycache__/
+*.pyc
+
+# Large local datasets (keep on GPU host)
+backend/dataset/
+backend/outputs/
+**/*.h5
+**/*.bin

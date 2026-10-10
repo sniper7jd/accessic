@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://accessic.local/schemas/localize.schema.json",
+  "title": "accessIC POST /localize response",
+  "description": "Frozen contract shared by the GPU FastAPI service and the iOS client. transform_matrix_map_from_camera is authoritative (T_M_from_C). Quaternion order is xyzw.",
+  "oneOf": [
+    { "$ref": "#/$defs/success" },
+    { "$ref": "#/$defs/failure" }
+  ],
+  "$defs": {
+    "success": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "map_id",
+        "coordinate_frame",
+        "units",
+        "pose_convention",
+        "image_width_px",
+        "image_height_px",
+        "inlier_count",
+        "position_map_xyz",
+        "quaternion_xyzw",
+        "transform_matrix_map_from_camera"
+      ],
+      "properties": {
+        "status": { "const": "success" },
+        "map_id": {
+          "type": "string",
+          "description": "Versioned map identifier, e.g. whalen-floor1-v1"
+        },
+        "coordinate_frame": {
+          "type": "string",
+          "description": "Named map frame, e.g. whalen_floor1_map"
+        },
+        "units": {
+          "type": "string",
+          "enum": ["meters", "colmap_unscaled"],
+          "description": "Use meters only after verified metric scale. colmap_unscaled means AR physical placement must stay disabled."
+        },
+        "pose_convention": {
+          "const": "T_map_from_colmap_camera",
+          "description": "Matrix maps points from COLMAP camera coordinates into the map frame."
+        },
+        "image_width_px": { "type": "integer", "minimum": 1 },
+        "image_height_px": { "type": "integer", "minimum": 1 },
+        "inlier_count": { "type": "integer", "minimum": 0 },
+        "position_map_xyz": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number" },
+          "description": "Camera center in map coordinates; must agree with the matrix translation."
+        },
+        "quaternion_xyzw": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "number" },
+          "description": "Rotation of T_M_from_C as xyzw. Must be derived from the same estimator output as the matrix."
+        },
+        "transform_matrix_map_from_camera": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": { "type": "number" }
+          },
+          "description": "Row-major 4x4 T_M_from_C in JSON. Swift converts to column-major simd_float4x4."
+        }
+      }
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "error_code", "error"],
+      "properties": {
+        "status": { "const": "failed" },
+        "error_code": {
+          "type": "string",
+          "enum": [
+            "insufficient_inliers",
+            "invalid_image",
+            "unsupported_format",
+            "missing_calibration",
+            "internal_error",
+            "map_unavailable"
+          ]
+        },
+        "error": { "type": "string" },
+        "inlier_count": { "type": "integer", "minimum": 0 }
+      },
+      "description": "Failed responses must not include pose fields."
+    },
+    "localize_request_form": {
+      "type": "object",
+      "description": "multipart/form-data fields for POST /localize. Do not rely on JPEG EXIF for calibration.",
+      "required": ["file", "image_width_px", "image_height_px", "intrinsics_3x3"],
+      "properties": {
+        "file": {
+          "type": "string",
+          "contentMediaType": "image/jpeg",
+          "description": "JPEG preferred; capture at ~1920 long edge without unintended crop/rotation."
+        },
+        "image_width_px": { "type": "integer", "minimum": 1 },
+        "image_height_px": { "type": "integer", "minimum": 1 },
+        "intrinsics_3x3": {
+          "type": "string",
+          "description": "JSON row-major 3x3 camera intrinsics matching the uploaded pixels (scaled if the image was resized)."
+        },
+        "timestamp_seconds": {
+          "type": "number",
+          "description": "Optional ARFrame timestamp for client-side association only."
+        }
+      }
+    }
+  }
+}

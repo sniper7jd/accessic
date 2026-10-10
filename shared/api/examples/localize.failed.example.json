@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "error_code": "insufficient_inliers",
+  "error": "Insufficient visual inliers to estimate pose. Point the camera toward hallway features.",
+  "inlier_count": 3
+}

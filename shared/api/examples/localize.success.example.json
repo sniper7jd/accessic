@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "map_id": "whalen-floor1-v1",
+  "coordinate_frame": "whalen_floor1_map",
+  "units": "colmap_unscaled",
+  "pose_convention": "T_map_from_colmap_camera",
+  "image_width_px": 1920,
+  "image_height_px": 1440,
+  "inlier_count": 165,
+  "position_map_xyz": [1.45, 3.93, -4.82],
+  "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0],
+  "transform_matrix_map_from_camera": [
+    [1.0, 0.0, 0.0, 1.45],
+    [0.0, 1.0, 0.0, 3.93],
+    [0.0, 0.0, 1.0, -4.82],
+    [0.0, 0.0, 0.0, 1.0]
+  ]
+}

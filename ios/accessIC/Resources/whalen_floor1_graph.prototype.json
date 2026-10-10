@@ -1,0 +1,221 @@
+{
+  "data_state": "ui_prototype",
+  "map_id": "whalen-floor1-ui-prototype",
+  "coordinate_frame": "whalen_floor1_ui_prototype",
+  "units": "schematic",
+  "notes": "UI prototype only. Coordinates are schematic for Dijkstra and map canvas testing. They are NOT surveyed Whalen map coordinates and must not be used for live navigation claims.",
+  "nodes": [
+    {
+      "id": "proto_entrance",
+      "label": "Main entrance (prototype)",
+      "kind": "door",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": "proto_hall_a",
+      "label": "Hall A",
+      "kind": "corridor",
+      "x": 3.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": "proto_hall_b",
+      "label": "Hall B",
+      "kind": "corridor",
+      "x": 6.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": "proto_hall_c",
+      "label": "Hall C",
+      "kind": "corridor",
+      "x": 9.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": "proto_1101",
+      "label": "Room 1101 (prototype)",
+      "kind": "room",
+      "x": 3.0,
+      "y": 0.0,
+      "z": -2.0
+    },
+    {
+      "id": "proto_1102",
+      "label": "Room 1102 (prototype)",
+      "kind": "room",
+      "x": 6.0,
+      "y": 0.0,
+      "z": -2.0
+    },
+    {
+      "id": "proto_1201",
+      "label": "Room 1201 (prototype)",
+      "kind": "room",
+      "x": 9.0,
+      "y": 0.0,
+      "z": 2.0
+    },
+    {
+      "id": "proto_elevator",
+      "label": "Elevator (prototype)",
+      "kind": "elevator",
+      "x": 11.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": "proto_stairs",
+      "label": "Stairwell (prototype)",
+      "kind": "stairs",
+      "x": 11.0,
+      "y": 0.0,
+      "z": -2.5
+    },
+    {
+      "id": "proto_ramp",
+      "label": "Ramp (prototype)",
+      "kind": "ramp",
+      "x": 1.5,
+      "y": 0.0,
+      "z": 2.0
+    }
+  ],
+  "edges": [
+    {
+      "from": "proto_entrance",
+      "to": "proto_hall_a",
+      "edge_type": "corridor",
+      "length_meters": 3.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_a",
+      "to": "proto_hall_b",
+      "edge_type": "corridor",
+      "length_meters": 3.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_b",
+      "to": "proto_hall_c",
+      "edge_type": "corridor",
+      "length_meters": 3.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_c",
+      "to": "proto_elevator",
+      "edge_type": "corridor",
+      "length_meters": 2.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_a",
+      "to": "proto_1101",
+      "edge_type": "door",
+      "length_meters": 2.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_b",
+      "to": "proto_1102",
+      "edge_type": "door",
+      "length_meters": 2.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_c",
+      "to": "proto_1201",
+      "edge_type": "door",
+      "length_meters": 2.0,
+      "has_stairs": false,
+      "slope_pct": 0,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_hall_c",
+      "to": "proto_stairs",
+      "edge_type": "stairs",
+      "length_meters": 3.0,
+      "has_stairs": true,
+      "slope_pct": null,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_entrance",
+      "to": "proto_ramp",
+      "edge_type": "ramp",
+      "length_meters": 2.5,
+      "has_stairs": false,
+      "slope_pct": 5,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    },
+    {
+      "from": "proto_ramp",
+      "to": "proto_hall_a",
+      "edge_type": "ramp",
+      "length_meters": 2.0,
+      "has_stairs": false,
+      "slope_pct": 5,
+      "clear_width_cm": null,
+      "threshold_cm": null,
+      "door_operability": "unknown",
+      "status": "open",
+      "verified": false
+    }
+  ]
+}
